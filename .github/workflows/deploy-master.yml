@@ -1,0 +1,20 @@
+name: deploy-master
+
+on:
+  workflow_run:
+    workflows: [build]
+    branches: [master]
+    types:
+      - completed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.ACCESS_TOKEN }}
+
+      - name: Deploy
+        run: echo "Deployed to Production!"
