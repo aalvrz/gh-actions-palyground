@@ -15,6 +15,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
+          ref: ${{ github.event.workflow_run.head_branch }}
 
       - name: Deploy
         run: echo "Deployed to Production!"
